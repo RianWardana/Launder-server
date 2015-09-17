@@ -3,7 +3,7 @@
 class Notfound extends CI_Controller {
 
 	public function index() {
-		$this->load->view('notfound_view');
+		echo "Anda tersesat.";
 	}
 
 }
