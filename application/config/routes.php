@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "api";
+$route['default_controller'] = "notfound";
 $route['404_override'] = 'notfound';
 
 
