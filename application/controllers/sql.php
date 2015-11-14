@@ -4,9 +4,9 @@ class Sql extends CI_Controller {
 
 
 	public function index() {
-		$katalogTable = $this->db->get('katalog')->result();
-		$jenisTable = $this->db->get('jenis')->result();
-		$warnaTable = $this->db->get('warna')->result();
+		$katalogTable = $this->db->order_by('nama', 'asc')->get('katalog')->result();
+		$jenisTable = $this->db->order_by('nama', 'asc')->get('jenis')->result();
+		$warnaTable = $this->db->order_by('warna', 'asc')->get('warna')->result();
 		$katalogRows = $this->db->get('katalog')->num_rows();
 		$jenisRows = $this->db->get('jenis')->num_rows();
 		$warnaRows = $this->db->get('warna')->num_rows();
