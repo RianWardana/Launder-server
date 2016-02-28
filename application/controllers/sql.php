@@ -4,7 +4,8 @@ class Sql extends CI_Controller {
 
 
 	public function index() {
-		$katalogTable = $this->db->order_by('nama', 'asc')->get('katalog')->result();
+		// $katalogTable = $this->db->order_by('jenis', 'asc', 'warna', 'asc')->get('katalog')->result();
+		$katalogTable = $this->db->query("SELECT * FROM `katalog` ORDER BY `jenis`, `warna`, `keterangan`")->result();
 		$jenisTable = $this->db->order_by('nama', 'asc')->get('jenis')->result();
 		$warnaTable = $this->db->order_by('warna', 'asc')->get('warna')->result();
 		$katalogRows = $this->db->get('katalog')->num_rows();
@@ -21,18 +22,18 @@ class Sql extends CI_Controller {
 		// TAMPILKAN KATALOG //
 		$sql .= "t.executeSql(\"drop table if exists katalog\")";
 		$sql.= $newline;
-		$sql .= "t.executeSql(\"create table katalog (nama unique, jenis, warna, keterangan, dicuci int, timeselesai integer)\")";
+		$sql .= "t.executeSql(\"create table katalog (nama unique, jenis, warna, keterangan, dicuci int, terakhir_dicuci integer)\")";
 		$sql.= $newline;
 
 		foreach ($katalogTable as $katalog) {
-			$sql .= "t.executeSql(\"insert into katalog (nama, jenis, warna, keterangan, dicuci, timeselesai) 
+			$sql .= "t.executeSql(\"insert into katalog (nama, jenis, warna, keterangan, dicuci, terakhir_dicuci) 
 				values(
 					'{$katalog->nama}', 
 					'{$katalog->jenis}', 
 					'{$katalog->warna}', 
 					'{$katalog->keterangan}', 
 					{$katalog->dicuci}, 
-					{$katalog->timeselesai}
+					{$katalog->terakhir_dicuci}
 				)\")
 			";
 

@@ -29,7 +29,7 @@ class Api extends CI_Controller {
 				\"warna\" : \"{$katalog->warna}\",
 				\"keterangan\" : \"{$katalog->keterangan}\",
 				\"dicuci\" : {$katalog->dicuci},
-				\"timeselesai\" : {$katalog->timeselesai}
+				\"terakhir_dicuci\" : {$katalog->terakhir_dicuci}
 			}";
 			if ($rowKatalog < $katalogRows) $data .= ',';
 			$rowKatalog++;
@@ -93,7 +93,7 @@ class Api extends CI_Controller {
 					'warna' => $katalog['warna'],
 					'keterangan' => $katalog['keterangan'],
 					'dicuci' => $katalog['dicuci'],
-					'timeselesai' => $katalog['timeselesai']
+					'terakhir_dicuci' => $katalog['terakhir_dicuci']
 				);
 				$this->db->insert('katalog', $data);
 			}
