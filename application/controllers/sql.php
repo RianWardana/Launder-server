@@ -22,17 +22,18 @@ class Sql extends CI_Controller {
 		// TAMPILKAN KATALOG //
 		$sql .= "t.executeSql(\"drop table if exists katalog\")";
 		$sql.= $newline;
-		$sql .= "t.executeSql(\"create table katalog (nama unique, jenis, warna, keterangan, dicuci int, terakhir_dicuci integer)\")";
+		$sql .= "t.executeSql(\"create table katalog (nama unique, jenis, warna, keterangan, dicuci int, laundry int, terakhir_dicuci integer)\")";
 		$sql.= $newline;
 
 		foreach ($katalogTable as $katalog) {
-			$sql .= "t.executeSql(\"insert into katalog (nama, jenis, warna, keterangan, dicuci, terakhir_dicuci) 
+			$sql .= "t.executeSql(\"insert into katalog (nama, jenis, warna, keterangan, dicuci, laundry, terakhir_dicuci) 
 				values(
 					'{$katalog->nama}', 
 					'{$katalog->jenis}', 
 					'{$katalog->warna}', 
 					'{$katalog->keterangan}', 
-					{$katalog->dicuci}, 
+					{$katalog->dicuci},
+					{$katalog->laundry}, 
 					{$katalog->terakhir_dicuci}
 				)\")
 			";
