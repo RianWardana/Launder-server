@@ -94,6 +94,7 @@ class Api extends CI_Controller {
 					'warna' => $katalog['warna'],
 					'keterangan' => $katalog['keterangan'],
 					'dicuci' => $katalog['dicuci'],
+					'laundry' => $katalog['laundry'],
 					'terakhir_dicuci' => $katalog['terakhir_dicuci']
 				);
 				$this->db->insert('katalog', $data);
